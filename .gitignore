@@ -44,3 +44,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+.metadata
+analysis_options.yaml
+/android
+/ios
+/linux
+/web
+/test
