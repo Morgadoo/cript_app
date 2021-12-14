@@ -20,7 +20,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
@@ -48,11 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       pageBuilder: (BuildContext context,
                           Animation<double> animation,
-                          Animation<double> secAnimation) { 
-                            return PreferenceScreen();
-                          }
-                  )
-              );
+                          Animation<double> secAnimation) {
+                        return PreferenceScreen();
+                      }));
             },
           )
         ],

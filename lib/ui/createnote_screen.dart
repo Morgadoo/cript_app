@@ -79,7 +79,6 @@ class _CreateNote extends State<CreateNote> {
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         title: Text(widget.nameTitle),
       ),
@@ -87,64 +86,62 @@ class _CreateNote extends State<CreateNote> {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: ListView(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    DropdownButton(
-                      value: _selectedMode,
-                      items: _dropdownMenuItems,
-                      onChanged: onChageDropdownItem,
-                      isExpanded: true,
-                      style: Theme.of(context).textTheme.headline6,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  DropdownButton(
+                    value: _selectedMode,
+                    items: _dropdownMenuItems,
+                    onChanged: onChageDropdownItem,
+                    isExpanded: true,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    height:
+                        (debug[0].switchdebug) ? (_height / 4) : (_height / 2),
+                    child: Scrollbar(
+                      child: TextField(
+                        controller: _note,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 10,
+                        style: Theme.of(context).textTheme.headline6,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: widget.textt,
+                          errorText:
+                              _validate1 ? 'Input can\'t be empty' : null,
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 10),
-                    Container(
-                      height: (debug[0].switchdebug)
-                          ? (_height / 4)
-                          : (_height / 2),
+                  ),
+                  SizedBox(height: 10),
+                  Visibility(
+                    visible: debug[0].switchdebug,
+                    child: Container(
+                      height: _height / 3,
                       child: Scrollbar(
                         child: TextField(
-                          controller: _note,
+                          controller: _console,
+                          //enabled: false,
                           keyboardType: TextInputType.multiline,
-                          maxLines: 10,
-                          style: Theme.of(context).textTheme.headline6,
+                          maxLines: 100,
+                          enableInteractiveSelection: false,
+                          readOnly: true,
+                          style: TextStyle(fontSize: 16),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: widget.textt,
-                            errorText:
-                                _validate1 ? 'Input can\'t be empty' : null,
+                            labelText: "Console",
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Visibility(
-                      visible: debug[0].switchdebug,
-                      child: Container(
-                        height: _height / 3,
-                        child: Scrollbar(
-                          child: TextField(
-                            controller: _console,
-                            //enabled: false,
-                            keyboardType: TextInputType.multiline,
-                            maxLines: 100,
-                            enableInteractiveSelection: false,
-                            readOnly: true,
-                            style: TextStyle(fontSize: 16),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Console",
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-          
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
