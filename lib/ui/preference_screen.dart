@@ -44,7 +44,7 @@ class _PreferenceScreen extends State<PreferenceScreen> {
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   Row(children: <Widget>[
-                    RaisedButton(
+                    ElevatedButton(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -55,7 +55,7 @@ class _PreferenceScreen extends State<PreferenceScreen> {
                         onPressed: () =>
                             _themeChanger.setTheme(ThemeData.dark())),
                     SizedBox(width: 20),
-                    RaisedButton(
+                    ElevatedButton(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
